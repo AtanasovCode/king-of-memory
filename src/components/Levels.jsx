@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import * as Styled from '../../styles/Levels.Styled';
-import Card from "../Card";
+import * as Styled from '../styles/Levels.Styled';
+import Card from "./Card";
 
-const LevelOne = ({
+const Levels = ({
     cards,
     generateObjectWithCardDetails,
     level,
@@ -36,4 +36,4 @@ const LevelOne = ({
     );
 }
 
-export default LevelOne;
+export default Levels;

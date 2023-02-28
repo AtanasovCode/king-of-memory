@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as Styled from '../styles/Game.Styled';
-import LevelOne from './levels/LevelOne';
+import Levels from './Levels';
 
 import heart from '../assets/suites/hearts.png';
 import diamond from '../assets/suites/diamonds.png';
@@ -57,7 +57,7 @@ const Game = () => {
             <Styled.Heading>
                 Card Memory Game
             </Styled.Heading>
-            <LevelOne
+            <Levels
                 cards={cards}
                 generateObjectWithCardDetails={generateObjectWithCardDetails}
                 level={level}
