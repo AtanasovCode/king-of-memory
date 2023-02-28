@@ -13,14 +13,6 @@ const Game = () => {
 
     const [suite, setSuite] = useState(["heart", "diamond", "spade", "club"]);
 
-    const [currentNum, setCurrentNum] = useState();
-    const [currentSuite, setCurrentSuite] = useState();
-
-    useEffect(() => {
-        setCurrentNum(getRandomNumber());
-        setCurrentSuite(getRandomSuite());
-    }, [])
-
     const getRandomNumber = () => {
         let min = Math.ceil(1);
         let max = Math.floor(13);
@@ -49,11 +41,6 @@ const Game = () => {
                 Card Memory Game
             </Styled.Heading>
             <LevelOne
-                currentNum={currentNum}
-                setCurrentNum={setCurrentNum}
-                currentSuite={currentSuite}
-                setCurrentSuite={setCurrentSuite}
-
                 getRandomNumber={getRandomNumber}
                 getRandomSuite={getRandomSuite}
             />

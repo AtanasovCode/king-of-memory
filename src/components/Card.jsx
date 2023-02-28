@@ -4,14 +4,12 @@ import { useEffect, useState } from 'react';
 
 
 const Card = ({
-    currentNum,
-    currentSuite,
-    setCurrentNum,
-    setCurrentSuite,
-
     getRandomNumber,
     getRandomSuite,
 }) => {
+
+    const [currentNum, setCurrentNum] = useState();
+    const [currentSuite, setCurrentSuite] = useState();
 
     useEffect(() => {
         setCurrentNum(getRandomNumber());
