@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import * as Styled from '../styles/Game.Styled';
 import LevelOne from './levels/LevelOne';
-import Card from './Card';
 
 import heart from '../assets/suites/hearts.png';
 import diamond from '../assets/suites/diamonds.png';
@@ -12,6 +11,8 @@ const Game = () => {
 
 
     const [suite, setSuite] = useState(["heart", "diamond", "spade", "club"]);
+    const [level, setLevel] = useState(1);
+    const [cards, setCards] = useState({});
 
     const getRandomNumber = () => {
         let min = Math.ceil(1);
@@ -34,6 +35,22 @@ const Game = () => {
         if (suite[randomIndex] === "club") return club;
     }
 
+    //Generates an array with objects containing
+    //Info about N number of cards depending on parameter
+    //i.e {value: "A", suite: "src/assets/cards/spade.png"}
+    const generateObjectWithCardDetails = (numOfCards) => {
+        let tempCards = [];
+        for(let i = 0; i < numOfCards; i++) {
+            tempCards.push({value: `${getRandomNumber()}`, suite: `${getRandomSuite()}`})
+        }
+        setCards(tempCards);
+    }
+
+    useEffect(() => {
+        console.log(cards);
+    }, [cards])
+
+
 
     return (
         <Styled.Container>
@@ -41,8 +58,9 @@ const Game = () => {
                 Card Memory Game
             </Styled.Heading>
             <LevelOne
-                getRandomNumber={getRandomNumber}
-                getRandomSuite={getRandomSuite}
+                cards={cards}
+                generateObjectWithCardDetails={generateObjectWithCardDetails}
+                level={level}
             />
         </Styled.Container>
     );

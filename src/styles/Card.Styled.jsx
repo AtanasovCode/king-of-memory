@@ -13,6 +13,7 @@ export const Card = styled.div`
     user-select: none;
     cursor: pointer;
     position: relative;
+    margin: 25px;
 `;
 
 export const Top = styled.div`

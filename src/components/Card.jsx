@@ -4,33 +4,21 @@ import { useEffect, useState } from 'react';
 
 
 const Card = ({
-    getRandomNumber,
-    getRandomSuite,
+    value,
+    suite,
 }) => {
-
-    const [currentNum, setCurrentNum] = useState();
-    const [currentSuite, setCurrentSuite] = useState();
-
-    useEffect(() => {
-        setCurrentNum(getRandomNumber());
-        setCurrentSuite(getRandomSuite());
-    }, []);
-
     return (
-        <Styled.Card onClick={() => {
-            setCurrentNum(getRandomNumber());
-            setCurrentSuite(getRandomSuite());
-        }}>
+        <Styled.Card>
             <Styled.Top>
                 <Styled.Number>
-                    {currentNum}
+                    {value}
                 </Styled.Number>
                 <Styled.SmallSuite
-                    src={currentSuite}
+                    src={suite}
                 />
             </Styled.Top>
             <Styled.Suite
-                src={currentSuite}
+                src={suite}
             />
         </Styled.Card>
     );
