@@ -20,13 +20,17 @@ const Card = () => {
     }, [])
 
     const getRandomNumber = () => {
-        let num = Math.floor(Math.random() * 13);
+        let min = Math.ceil(1);
+        let max = Math.floor(13);
+        let num = Math.floor(Math.random() * (max - min + 1)) + min;
 
-        if (num > 0 && num <= 10) return num;
-        if (num === 0) return "A";
+        console.log(num);
+
+        if (num > 1 && num <= 10) return num;
+        if (num === 1) return "A";
         if (num === 11) return "J";
         if (num === 12) return "Q";
-        if (num === "13") return "K";
+        if (num === 13) return "K";
     }
 
     const getRandomSuite = () => {
