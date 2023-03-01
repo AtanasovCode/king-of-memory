@@ -62,6 +62,7 @@ const Game = () => {
                 cards={cards}
                 generateObjectWithCardDetails={generateObjectWithCardDetails}
                 level={level}
+                setLevel={setLevel}
             />
         </Styled.Container>
     );

@@ -6,9 +6,13 @@ import { useEffect, useState } from 'react';
 const Card = ({
     value,
     suite,
+    handleCardClick,
+    id,
 }) => {
     return (
-        <Styled.Card>
+        <Styled.Card onClick={() => {
+            handleCardClick(value, suite, id)
+        }}>
             <Styled.Top>
                 <Styled.Number>
                     {value}
