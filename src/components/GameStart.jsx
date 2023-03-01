@@ -33,7 +33,13 @@ const GameStart = ({
             />
             <Styled.Tint>
                 <Styled.Title>
-                    King Of Memory
+                    <Styled.King>
+                        <Styled.KingLetter>K</Styled.KingLetter>
+                        <Styled.KingIcon 
+                            src={heart}
+                        />
+                    </Styled.King>
+                    ing Of Memory
                 </Styled.Title>
                 <Styled.Button
                     type="button"

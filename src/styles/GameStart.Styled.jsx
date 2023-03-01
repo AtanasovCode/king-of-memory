@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import * as Cards from './Card.Styled';
 
 export const Container = styled.div`
     height: 100vh;
@@ -25,12 +24,45 @@ export const Title = styled.div`
     font-weight: 600;
     margin-bottom: 60px;
     z-index: 5;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-family: 'Gloock', serif;
+`;
+
+export const King = styled.div`
+    width: 50px;
+    height: 70px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 7px;
+    position: relative;
+    background-color: #ffffff;
+`;
+
+export const KingLetter = styled.div`
+    position: absolute;
+    top: 5px;
+    left: 7px;
+    font-size: 15px;
+    color: #000;
+`;
+
+export const KingIcon = styled.img`
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 25px;
+    left: 6px;
 `;
 
 export const Button = styled.input`
     height: 45px;
-    background-color: #fb2525;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border: none;
     border-radius: 10px;
     padding: 10px 45px;
@@ -40,46 +72,5 @@ export const Button = styled.input`
         background-color: #008e00;
         cursor: pointer;
     }
-`;
-
-export const FallingCards = styled.div`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-`;
-
-
-export const Card = styled(Cards.Card)`
-    width: 100px;
-    height: 170px;
-    animation-name: fall;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    
-    @keyframes fall {
-        from {
-            transform: translateY(-500px) rotateY(0);
-        }
-        to {
-            transform: translateY(420%) rotateY(360deg);
-        }
-    }
-`;
-
-export const Top = styled(Cards.Top)``;
-
-export const Number = styled(Cards.Number)`
-    font-size: 18px;
-`;
-
-export const Suite = styled.img`
-    width: 25px;
-    height: 25px;
-`;
-
-export const SmallSuite = styled.img`
-    width: 15px;
-    height: 15px;
 `;
 
