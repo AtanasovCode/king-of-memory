@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import * as Styled from '../styles/Game.Styled';
 import Levels from './Levels';
 
@@ -41,7 +42,7 @@ const Game = () => {
     const generateObjectWithCardDetails = (numOfCards) => {
         let tempCards = [];
         for(let i = 0; i < numOfCards; i++) {
-            tempCards.push({value: `${getRandomNumber()}`, suite: `${getRandomSuite()}`})
+            tempCards.push({value: `${getRandomNumber()}`, suite: `${getRandomSuite()}`, id: uuidv4()})
         }
         setCards(tempCards);
     }
