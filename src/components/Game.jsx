@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import * as Styled from '../styles/Game.Styled';
+import GameStart from './GameStart';
 import Levels from './Levels';
 
 import heart from '../assets/suites/hearts.png';
@@ -14,6 +15,10 @@ const Game = () => {
     const [suite, setSuite] = useState(["heart", "diamond", "spade", "club"]);
     const [level, setLevel] = useState(1);
     const [cards, setCards] = useState({});
+
+    //Set in session storage so that the game does not
+    //Go back to title screen every refresh
+    sessionStorage.setItem("gameStart", true);
 
     const getRandomNumber = () => {
         let min = Math.ceil(1);
@@ -41,8 +46,8 @@ const Game = () => {
     //i.e {value: "A", suite: "src/assets/cards/spade.png"}
     const generateObjectWithCardDetails = (numOfCards) => {
         let tempCards = [];
-        for(let i = 0; i < numOfCards; i++) {
-            tempCards.push({value: `${getRandomNumber()}`, suite: `${getRandomSuite()}`, id: uuidv4()})
+        for (let i = 0; i < numOfCards; i++) {
+            tempCards.push({ value: `${getRandomNumber()}`, suite: `${getRandomSuite()}`, id: uuidv4() })
         }
         setCards(tempCards);
     }
@@ -51,15 +56,20 @@ const Game = () => {
 
     return (
         <Styled.Container>
-            <Styled.Heading>
-                Card Memory Game
-            </Styled.Heading>
-            <Levels
-                cards={cards}
-                generateObjectWithCardDetails={generateObjectWithCardDetails}
-                level={level}
-                setLevel={setLevel}
-            />
+            {
+                sessionStorage.getItem("gameStart") ?
+                    <GameStart 
+                        getRandomNumber={getRandomNumber}
+                        getRandomSuite={getRandomSuite}
+                    />
+                    :
+                    <Levels
+                        cards={cards}
+                        generateObjectWithCardDetails={generateObjectWithCardDetails}
+                        level={level}
+                        setLevel={setLevel}
+                    />
+            }
         </Styled.Container>
     );
 }

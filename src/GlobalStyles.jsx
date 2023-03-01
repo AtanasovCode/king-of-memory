@@ -6,7 +6,7 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
     }
-    body {
+    body, html {
         background-color: #111;
         color: #fff;
     }

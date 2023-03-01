@@ -9,9 +9,3 @@ export const Container = styled.div`
     justify-content: center;
     font-family: sans-serif;
 `;
-
-export const Heading = styled.div`
-    font-size: 24px;
-    font-weight: 600;
-    padding: 40px;
-`;
