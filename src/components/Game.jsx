@@ -47,10 +47,6 @@ const Game = () => {
         setCards(tempCards);
     }
 
-    useEffect(() => {
-        console.log(cards);
-    }, [cards])
-
 
 
     return (

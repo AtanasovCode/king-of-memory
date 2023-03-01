@@ -6,12 +6,19 @@ import { useEffect, useState } from 'react';
 const Card = ({
     value,
     suite,
-    handleCardClick,
     id,
+    handleCardClick,
+    isDuplicate,
+    handleCardDuplicate,
 }) => {
     return (
         <Styled.Card onClick={() => {
-            handleCardClick(value, suite, id)
+            if (isDuplicate(id)) {
+                handleCardDuplicate();
+                console.log("Game Over!");
+            } else {
+                handleCardClick(value, suite, id);
+            }
         }}>
             <Styled.Top>
                 <Styled.Number>
