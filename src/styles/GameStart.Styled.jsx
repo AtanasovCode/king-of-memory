@@ -9,6 +9,17 @@ export const Container = styled.div`
     justify-content: center;
 `;
 
+export const Tint = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #00000070;
+    z-index: 10;
+    width: 100vw;
+    height: 100%;
+`;
+
 export const Title = styled.div`
     font-size: 33px;
     font-weight: 600;
@@ -18,12 +29,15 @@ export const Title = styled.div`
 
 export const Button = styled.input`
     height: 45px;
-    background-color: lime;
+    background-color: #fb2525;
+    color: #fff;
     border: none;
+    border-radius: 10px;
     padding: 10px 45px;
+    font-weight: 600;
     z-index: 5;
     &:hover {
-        background-color: #01b701;
+        background-color: #008e00;
         cursor: pointer;
     }
 `;
@@ -40,15 +54,15 @@ export const Card = styled(Cards.Card)`
     width: 100px;
     height: 170px;
     animation-name: fall;
-    animation-duration: 5s;
-    animation-iteration-count: 1;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
     
     @keyframes fall {
         from {
-            transform: translateY(0);
+            transform: translateY(-500px) rotateY(0);
         }
         to {
-            transform: translateY(420%);
+            transform: translateY(420%) rotateY(360deg);
         }
     }
 `;

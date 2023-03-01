@@ -61,6 +61,10 @@ const Game = () => {
                     <GameStart 
                         getRandomNumber={getRandomNumber}
                         getRandomSuite={getRandomSuite}
+                        heart={heart}
+                        diamond={diamond}
+                        spade={spade}
+                        club={club}
                     />
                     :
                     <Levels
