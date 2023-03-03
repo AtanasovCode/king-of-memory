@@ -35,6 +35,9 @@ const Levels = ({
         generateObjectWithCardDetails(numOfCards);
     }, [numOfCards])
 
+    //Check if there are duplicate cards
+    //It checks the id of the card that has been clicked
+    //With the remaining card id's inside of cardsClicked
     const isDuplicate = (cardId) => {
         return cardsClicked.find((card) => card.id === cardId)
     }
@@ -44,6 +47,13 @@ const Levels = ({
         //Add the clicked card to the array
         let temp = { value: value, suite: suite, id: id };
         setCardsClicked((current) => [temp, ...current]);
+
+        //Shuffle card elements using Durstenfeld shuffle algorithm
+        //https://stackoverflow.com/a/12646864
+        for (let i = cards.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [cards[i], cards[j]] = [cards[j], cards[i]];
+        }
 
 
         //If the cardsClicked array has more than one card
