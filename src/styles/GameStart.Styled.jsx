@@ -74,3 +74,21 @@ export const Button = styled.input`
     }
 `;
 
+export const Credits = styled.a`
+    position: absolute;
+    bottom: 25px;
+    color: darkgray;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: .6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const CreditImage = styled.img`
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+`;
+

@@ -2,23 +2,26 @@ import { useState, useEffect } from "react";
 import * as Styled from '../styles/Levels.Styled';
 import Card from "./Card";
 
+
 const Levels = ({
     cards,
     generateObjectWithCardDetails,
     level,
     setLevel,
+    setGameStart,
 }) => {
 
     const [cardsClicked, setCardsClicked] = useState([]);
     const [numOfCards, setNumOfCards] = useState(3);
     const [showFail, setShowFail] = useState(false);
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
-        if(level === 0) {
+        if (level === 0) {
             setShowFail(true);
             generateObjectWithCardDetails(0);
         };
-        if(level === 1) setShowFail(false);
+        if (level === 1) setShowFail(false);
         if (level === 2) setNumOfCards(4);
         if (level === 3) setNumOfCards(5);
         if (level === 4) setNumOfCards(6);
@@ -41,7 +44,7 @@ const Levels = ({
         //Add the clicked card to the array
         let temp = { value: value, suite: suite, id: id };
         setCardsClicked((current) => [temp, ...current]);
-        console.log(cardsClicked.length);
+
 
         //If the cardsClicked array has more than one card
         //Check to see if the cards are the same
@@ -52,9 +55,15 @@ const Levels = ({
 
     const handleCardDuplicate = () => {
         setLevel(0);
+        setScore(0);
     }
 
     useEffect(() => {
+
+        //Every time cardsClicked is updated, it means the user
+        //Has clicked a card, so we increase the score
+        if (cardsClicked.length > 0) setScore(score + 5);
+
         //Check if the two arrays have the same length
         //If they do, it means there were no duplicate cards clicked
         //And the level can be incremented
@@ -66,10 +75,18 @@ const Levels = ({
 
     return (
         <Styled.Container>
-            <Styled.Heading>
-                Level {level}
-            </Styled.Heading>
-            <Styled.Game>
+            <Styled.GameInfo>
+                <Styled.Level>
+                    Level {level}
+                </Styled.Level>
+                <Styled.Score>
+                    Score {score}
+                </Styled.Score>
+                <Styled.MainMenu onClick={() => setGameStart(true)}>
+                    Main Menu
+                </Styled.MainMenu>
+            </Styled.GameInfo>
+            <Styled.Game cards={numOfCards}>
                 {
                     cards.length > 0 &&
                     cards.map((card) => {
@@ -89,6 +106,9 @@ const Levels = ({
                     })
                 }
             </Styled.Game>
+            <Styled.GameDescription>
+                Don't click the same card twice!
+            </Styled.GameDescription>
         </Styled.Container>
     );
 }

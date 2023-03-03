@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-    width: 250px;
-    height: 350px;
+    max-width: 225px;
+    max-height: 350px;
+    margin: 0 40px 40px 40px;
     border-radius: 20px;
     border: 1px solid #d8caca80;
     background-color: #0f0d0d;
@@ -13,7 +14,6 @@ export const Card = styled.div`
     user-select: none;
     cursor: pointer;
     position: relative;
-    margin: 25px;
 `;
 
 export const Top = styled.div`

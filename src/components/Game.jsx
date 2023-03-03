@@ -15,10 +15,11 @@ const Game = () => {
     const [suite, setSuite] = useState(["heart", "diamond", "spade", "club"]);
     const [level, setLevel] = useState(1);
     const [cards, setCards] = useState({});
+    const [gameStart, setGameStart] = useState(true);
 
     //Set in session storage so that the game does not
     //Go back to title screen every refresh
-    sessionStorage.setItem("gameStart", true);
+    //sessionStorage.setItem("gameStart", true);
 
     const getRandomNumber = () => {
         let min = Math.ceil(1);
@@ -57,7 +58,7 @@ const Game = () => {
     return (
         <Styled.Container>
             {
-                sessionStorage.getItem("gameStart") ?
+                gameStart === true ?
                     <GameStart 
                         getRandomNumber={getRandomNumber}
                         getRandomSuite={getRandomSuite}
@@ -65,6 +66,7 @@ const Game = () => {
                         diamond={diamond}
                         spade={spade}
                         club={club}
+                        setGameStart={setGameStart}
                     />
                     :
                     <Levels
@@ -72,6 +74,7 @@ const Game = () => {
                         generateObjectWithCardDetails={generateObjectWithCardDetails}
                         level={level}
                         setLevel={setLevel}
+                        setGameStart={setGameStart}
                     />
             }
         </Styled.Container>

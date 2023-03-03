@@ -2,13 +2,15 @@ import { useState } from 'react';
 import * as Styled from '../styles/GameStart.Styled';
 import Snowfall from 'react-snowfall';
 
+import gh from '../assets/icons/gh.png';
+
+
 const GameStart = ({
-    getRandomNumber,
-    getRandomSuite,
     diamond,
     heart,
     spade,
     club,
+    setGameStart,
 }) => {
 
     const diamondImg = document.createElement("img");
@@ -20,16 +22,16 @@ const GameStart = ({
     spadeImg.src = spade;
     clubImg.src = club;
 
+    //Images used for falling snow effect in title screen
     const [suites, setSuites] = useState([heartImg, diamondImg, spadeImg, clubImg]);
 
 
     return (
         <Styled.Container>
-            <Snowfall
-                images={suites}
-                radius={[8.5, 35.5]}
-                snowFlakeCount={1}
-                style={{ backgroundColor: "#000000" }}
+            <Snowfall //npm package
+                images={suites} //Instead of snow - render images
+                radius={[5.5, 37.5]} //Min and Max radius of images/snow
+                style={{ backgroundColor: "#000000" }} //Apply style to the parent container
             />
             <Styled.Tint>
                 <Styled.Title>
@@ -44,7 +46,19 @@ const GameStart = ({
                 <Styled.Button
                     type="button"
                     value="Start Game"
+                    onClick={() => {
+                        //When gameStart == false
+                        //The game starts
+                        setGameStart(false);
+                    }}
                 />
+                <Styled.Credits href="https://github.com/atanasovCode">
+                    Made by 
+                    <Styled.CreditImage 
+                        src={gh}
+                    />
+                    atanasovCode
+                </Styled.Credits>
             </Styled.Tint>
         </Styled.Container>
     );
